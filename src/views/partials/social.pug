@@ -1,0 +1,7 @@
+.social-icons
+  each social in config.social
+    a(
+      title= social.title,
+      href= social.href
+    )
+      i(class=social.class)

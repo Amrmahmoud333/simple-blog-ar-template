@@ -1,0 +1,36 @@
+{
+  "name": "simple-blog-template",
+  "version": "1.0.0",
+  "description": "simple arabic blog",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js --ext *",
+    "build": "node build.js"
+  },
+  "keywords": [
+    "portfolio",
+    "blog",
+    "arabic"
+  ],
+  "author": "أحمد الطبراني (Ahmed El-Tabarani)",
+  "license": "MIT",
+  "dependencies": {
+    "dompurify": "^2.2.8",
+    "express": "^4.18.2",
+    "front-matter": "^4.0.2",
+    "jsdom": "^20.0.0",
+    "marked": "^4.0.18",
+    "moment": "^2.29.4",
+    "pug": "^3.0.2",
+    "vazir-code-font": "^1.1.2",
+    "vazirmatn": "^33.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "18.7.0",
+    "npm": "8.15.0"
+  }
+}

@@ -1,0 +1,19 @@
+doctype html
+
+html(lang='ar' dir='rtl')
+  include partials/head
+  body.line-numbers
+    include partials/header
+    block content
+      main.center
+        div
+          each description in config.homepage.description
+            h1= description
+          h2=config.homepage.summary
+          h2 تفقدوا المقالات 🔻
+          a(href='/articles.html')
+            button.nice-btn مقالاتي ✍
+          include partials/social
+    include partials/footer
+
+script(src='/js/scroll.js')

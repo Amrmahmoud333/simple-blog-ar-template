@@ -1,0 +1,37 @@
+extends index
+
+mixin card(title, description, slug, createAt)
+    .card
+        .info
+            h3= title
+            p= description
+        .bar
+            a(href=`/articles/${slug}.html`)
+                button.nice-btn قراءة المقالة
+            p#createAt= createAt
+
+block content
+    main
+        section.info
+            h1.line-title المقالات 
+                i.fa-solid.fa-pager
+            each description in config.articles.description
+                p= description
+
+        section.table-of-contents
+            h1 الفهرس
+            ul
+                each index in categoriesIndex
+                    li
+                        a(href=`#${index.id}`)
+                            code= index.category
+
+        section.content
+            h1 عدد المقالات: #{articles.length}
+            each index in categoriesIndex
+                h2.line-title(id=index.id)=index.category
+                p.nice-text= index.description
+                .cards-container
+                    each article in articles
+                        if article.category == index.category
+                            +card(article.title, article.description, article.slug, article.createAt)

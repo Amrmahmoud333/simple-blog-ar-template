@@ -1,0 +1,12 @@
+[
+  {
+    "id": "example-1",
+    "category": "تصنيف",
+    "description":"وصف في غاية الروعة"
+  },
+  {
+    "id": "example-2",
+    "category": " تصنيف أخر مختلف",
+    "description":"وصف رائعة وجميل"
+  }
+]

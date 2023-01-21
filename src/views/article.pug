@@ -1,0 +1,21 @@
+extends index
+
+mixin shareToSocialMedia(title, slug, description)
+  .social-icons.share-links
+    a.share-link.facebook(target='_blank' href=`https://www.facebook.com/sharer/sharer.php?u=${config.host}/article/${slug}&`)
+      i.fab.fa-facebook-square
+    a.share-link.twitter(target='_blank' href=`https://twitter.com/intent/tweet?text=${title}&url=${config.host}/article/${slug}`)
+      i.fab.fa-twitter-square
+    a.share-link.linkedin(target='_blank' href=`https://www.linkedin.com/shareArticle?mini=true&url=${config.host}/article/${slug}&title=${title}&summary=${description}&source=${config.host}/`)
+      i.fab.fa-linkedin
+    a.share-link.whatsapp(target='_blank' href=`whatsapp://send?text=${title} - ${config.host}/article/${slug}`)
+      i.fab.fa-whatsapp
+    a.share-link.telegram(target='_blank' href=`tg://msg?text=${title} - ${config.host}/article/${slug}`)
+      i.fab.fa-telegram-plane
+    a.share-link.reddit(target='_blank' href=`https://reddit.com/submit?url=${config.host}/article/${slug}&title=${title}`)
+      i.fab.fa-reddit-alien
+
+block content
+  main 
+    +shareToSocialMedia(title, slug, description)
+    article !{article}
