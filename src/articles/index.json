@@ -7,6 +7,12 @@
   {
     "id": "example-2",
     "category": " تصنيف أخر مختلف",
-    "description":"وصف رائعة وجميل"
+    "description":"وصف رائع وجميل"
+  },
+
+  {
+    "id": "unfinished-articles",
+    "category": "مقالات غير مكتملة",
+    "description": "ضع المقالات الغير منتهية في مجلد unfinished-articles، لا تقلق ستظهر فقط في وضع الـ dev ولن تظهر بعد الـ build"
   }
 ]

@@ -168,6 +168,15 @@ article h6::before {
   content: '######';
 }
 
+article #reading-time {
+  text-align: center;
+}
+
+article #reading-time > span {
+  font-weight: 700;
+  color: var(--main-color);
+}
+
 code {
   font-size: 1em;
   padding: 0px 8px;
@@ -282,17 +291,6 @@ main {
 
 pre {
   position: relative;
-}
-
-.copy-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0.5em;
-  padding: 0.5em;
-  font-size: 1.2em;
-  border-radius: 10px;
-  display: flex;
 }
 
 :is(ul, ol) li::marker {

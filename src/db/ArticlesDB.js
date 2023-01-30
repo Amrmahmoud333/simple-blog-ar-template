@@ -1,7 +1,6 @@
 const fs = require('fs');
 const fm = require('front-matter');
 const path = require('path');
-const moment = require('moment');
 
 const generateContentAsHTML = require('../utils/generateContentAsHTML');
 const config = JSON.parse(
@@ -14,11 +13,18 @@ class ArticleDB {
 
     const inputArticlesDir = path.join(__dirname, '../articles');
 
-    const categoriesIndex = JSON.parse(
+    let categoriesIndex = JSON.parse(
       fs.readFileSync(path.join(inputArticlesDir, 'index.json'), {
         encoding: 'utf-8',
       })
     );
+
+    if (process.env.NODE_ENV != 'development') {
+      categoriesIndex = categoriesIndex.filter((index) => {
+        if (index.id != 'unfinished-articles') return index;
+      });
+    }
+
     this.categoriesIndex = categoriesIndex;
 
     let filesPath = [];
@@ -36,6 +42,11 @@ class ArticleDB {
         encoding: 'utf8',
       });
       const res = fm(data);
+
+      res.attributes.readingTime = Math.ceil(
+        res.body.split(' ').length / 225
+      );
+
       const splitPath = path.split(/\\|\//);
 
       res.attributes.category = categoriesIndex.find(
@@ -47,15 +58,16 @@ class ArticleDB {
         ''
       );
 
-      moment.locale('ar');
+      res.attributes.createAtTimestamp = new Date(res.attributes.createAt);
 
-      res.attributes.createAtTimestamp = moment(
-        res.attributes.createAt
-      ).unix();
+      res.attributes.createAt =
+        new Date(res.attributes.createAt).toLocaleString('ar', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          weekday: 'long',
+        }) + ' م';
 
-      res.attributes.createAt = moment(res.attributes.createAt).format(
-        'dddd، D MMMM YYYY'
-      );
       this.articles.push(res);
       this.articlesAttributes.push(res.attributes);
     }
